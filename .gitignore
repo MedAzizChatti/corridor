@@ -1,0 +1,20 @@
+# Secrets
+.env
+
+# Python
+**/.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+# Frontend
+node_modules/
+frontend/dist/
+
+# OS
+.DS_Store
+
+# Local only: raw design transcript (conclusions live in docs/) and the post plan
+awel_conv_3Al_projet.md
+docs/learning/post-ideas.md

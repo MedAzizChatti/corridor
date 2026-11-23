@@ -1,0 +1,4 @@
+# Store text files with LF in the repo and in the working tree, on Windows too.
+# Stops CRLF/LF churn between PowerShell, WSL and CI.
+* text=auto eol=lf
+*.ps1 text eol=crlf

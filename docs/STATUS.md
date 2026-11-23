@@ -3,7 +3,7 @@
 _Update this at the end of every session (CLAUDE.md §11). The repo is the memory, not the chat._
 
 **Last updated:** 2026-11-23
-**Current phase:** Phase 0 (setup), Task 1 in progress
+**Current phase:** Phase 0 (setup), Task 2 done → Task 3 next
 
 ## Done
 - Design session (grill-me): 25 ADRs in `docs/decisions/`, M1 definition of done (`docs/milestones/M1.md`), roadmap (`docs/milestones/M1-plan.md`), Phase 0 plan (`docs/plans/phase-0-setup.md`).
@@ -12,13 +12,12 @@ _Update this at the end of every session (CLAUDE.md §11). The repo is the memor
 - CLAUDE.md: Corridor rules added below the original generic rules.
 
 ## In progress
-- Phase 0 Task 1: files written (`.gitignore`, `.gitattributes`, `LICENSE` with a `<YOUR NAME>` placeholder, `README.md`, `.env.example`, `.pre-commit-config.yaml`); `git init -b main` done with Windows Git. Remaining (developer, PowerShell): fill in LICENSE name, install pre-commit, gitleaks verification, first commit, create GitHub repo + push + push protection.
-- Decisions: git and pre-commit run from Windows PowerShell, not WSL. `awel_conv_3Al_projet.md` stays local (gitignored).
+- Phase 0 Task 1 done: repo public at github.com/MedAzizChatti/corridor, pre-commit + gitleaks verified, private files gitignored (transcript, post-ideas.md). Git runs from Windows (VS Code, Git Bash), commit email = GitHub noreply.
+- Phase 0 Task 2 done: `docker-compose.yml`, PostGIS 3.5 healthy on 5434, volume `corridor_pgdata`. The image auto-enables postgis in the default DB; the Alembic migration must still create it.
 
 ## Next
 1. Developer's homework (optional, recommended): race-lab exercises; n-plus-one-lab exercises; fix the POS `add_order` race + N+1 with real-Postgres tests.
-2. Finish Phase 0 Task 1 (steps above), then Task 2 (docker-compose).
-3. Install uv (Phase 0, Task 3, Step 0). The GitHub CLI isn't installed; create the repo in the browser.
+2. Phase 0 Task 3 (backend skeleton). First install uv (Step 0).
 
 ## Open questions
 - None blocking. Deferred: deployment (M2).

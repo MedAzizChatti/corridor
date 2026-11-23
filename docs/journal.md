@@ -33,3 +33,9 @@ Format:
 - Fix: `selectinload(Employee.roles)` sends 2 queries; `joinedload` sends 1.
 - Numbers (localhost): 101 queries / ~100 ms → 2 queries / ~8 ms. With a cloud DB (5–50 ms per round trip) that's 0.5–5 s → 10–100 ms.
 - Lesson: async SQLAlchemy's "annoying" crash is a feature. It makes hidden queries impossible to ignore.
+
+## 2026-11-23 — Backend skeleton (Phase 0 Task 3)
+- Surprise: `uv init --app` (uv 0.13) generated a packaged `src/` layout with a build backend. Replaced it with a flat `backend/app/` and `[tool.uv] package = false`: the backend is an app, not a library.
+- Surprise: the `postgis/postgis` image auto-enables postgis (plus `postgis_topology`, `postgis_tiger_geocoder`) in the default DB, so `alembic upgrade` there proves nothing. Verified migration 0001 on a scratch DB created from `template0`: upgrade → postgis 3.5.2 present; downgrade → gone.
+- Decision: the downgrade is a plain `DROP EXTENSION postgis`, no `CASCADE`. On the dev DB it fails (other extensions depend on postgis); that's wanted: `CASCADE` would one day silently drop every geometry column.
+- Gotcha (WSL → Windows exe): env vars only cross into `uv.exe` if listed in `WSLENV`.

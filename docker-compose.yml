@@ -1,0 +1,20 @@
+# Postgres + PostGIS for local development. The apps run natively, not in Docker.
+# Usage: cp .env.example .env ; docker compose up -d db
+name: corridor
+
+services:
+  db:
+    image: postgis/postgis:17-3.5
+    env_file: .env
+    ports:
+      - "5434:5432" # 5433 is used by the race lab
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pgdata: # becomes "corridor_pgdata"
